@@ -87,4 +87,7 @@ class Entreprise
 
         return $this;
     }
+    public function __toString() {
+        return "L'entreprise: ".$this->name."\n+Le titre est ".$this->title ;
+    }
 }

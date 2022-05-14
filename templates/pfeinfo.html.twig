@@ -1,8 +1,13 @@
-{% extends "base.html.twig"%}
-{% block body%}
-    <div>
-             PFE title : {{ pfe.title }}
-            PFE name : {{ pfe.name }}
-            PFE Entreprise: {{ pfe.entreprise }}
-    </div>
-{% endblock%}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h3>Voici le PFE ajout&eacute</h3>
+<h4> PFE Titre : {{ pfe.title }}</h4>
+    <h5>PFE name : {{ pfe.name }}</h5>
+    <h5>PFE Entreprise: {{ pfe.entreprise }}</h5>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
