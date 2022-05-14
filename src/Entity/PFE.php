@@ -19,14 +19,10 @@ class PFE
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $name;
 
-    #[ORM\ManyToOne(targetEntity: Entreprise::class, inversedBy: 'OneToMany')]
+    #[ORM\ManyToOne(targetEntity: Entreprise::class)]
+    #[ORM\JoinColumn(nullable: false)]
     private $entreprise;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Package", inversedBy="users")
-     * @ORM\JoinColumn(name="package_id", referencedColumnName="id", nullable=false)
-     */
-    private $package;
 
     public function getId(): ?int
     {

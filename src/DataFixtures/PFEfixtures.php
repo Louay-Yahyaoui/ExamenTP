@@ -5,8 +5,9 @@ namespace App\DataFixtures;
 use App\Entity\Entreprise;
 use App\Entity\PFE;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-class PFEfixtures extends Fixture
+class PFEfixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
@@ -15,12 +16,18 @@ class PFEfixtures extends Fixture
             $pfe = new PFE();
             $pfe->setName("name".$i);
             $pfe->setTitle("PFE" . $i);
-            $pfe->setEntreprise($repo->findOneBy(["name"=>"Name".$i+rand(0,49)]));
+            $entre=$repo->findOneBy(["name"=>"name".rand(0,49)]);
+            $pfe->setEntreprise($entre);
             $manager->persist($pfe);
         }
 
         $manager->flush();
     }
-
+    public function getDependencies()
+    {
+        return [
+            EntrepriseFixtures::class,
+        ];
+    }
 }
 
